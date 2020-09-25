@@ -1,0 +1,19 @@
+.notes-preview-list {
+
+  &__list-item {
+    display: block;
+    max-width: 100%;
+  }
+
+  &__list-item-button {
+    display: block;
+    background: none;
+    border: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-height: 2em;
+    padding: 16px;
+    max-width: 100%;
+  }
+}

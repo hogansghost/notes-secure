@@ -1,0 +1,27 @@
+:root {
+  --background-color: white;
+  --text-color: black;
+
+  &[data-theme="dark"] {
+    --background-color: black;
+    --text-color: white;
+  }
+}
+
+/**
+ * Font families
+ */
+$font-fallback: "Helvetica", "Arial", sans-serif;
+$body-font-family: "Work Sans", $font-fallback;
+
+/**
+ * Padding
+ */
+$content-gutter-sm: 8px;
+$content-gutter-md: 16px;
+$content-gutter-lg: 32px;
+
+
+
+$background-color: var(--background-color, #fff);
+$text-color: var(--text-color, #000);

@@ -1,17 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+
+import { LoadingProvider } from 'context/loading-context';
+import { NotesAppProvider } from 'context/notes-app-context';
+import { DarkmodeProvider } from 'context/dark-mode-context';
+
+import NotesApp from 'components/notes-app/notes-app';
+import SvgYard from 'components/SvgYard/svg-yard';
+
+import './index.scss';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <SvgYard />
+
+    <LoadingProvider>
+      <NotesAppProvider>
+        <DarkmodeProvider>
+          <NotesApp />
+        </DarkmodeProvider>
+      </NotesAppProvider>
+    </LoadingProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
