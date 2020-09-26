@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import ReactMarkdown from 'react-markdown';
 
 import { LoadingContext } from 'context/loading-context';
 import { NotesAppContext } from 'context/notes-app-context';
@@ -18,13 +19,14 @@ export const NotesViewer = ({
     isLoading,
   } = useContext(LoadingContext);
 
-  const content = selectedNote?.description ? decodeURI(selectedNote.description).replace(/\n/g, "<br />") : '';
   return !isLoading ? (
     <div className="notes-viewer">
       { selectedNote ? (
         <>
-          <p>ID: {selectedNote.id}</p>
-          <p dangerouslySetInnerHTML={{__html: content}} />
+          <p>{selectedNote.id}</p>
+          <p>{selectedNote.title}</p>
+
+          <ReactMarkdown source={selectedNote.description} />
         </>
       ) : (
         <p>Select a note!</p>

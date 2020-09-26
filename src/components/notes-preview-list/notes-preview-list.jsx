@@ -26,7 +26,7 @@ export const NotesPreviewList = ({
     <ul className="notes-preview-list">
       { notes.map((note) => (
         <li className="notes-preview-list__list-item" key={note.id}>
-          <button disabled={isLoading} className="notes-preview-list__list-item-button" onClick={() => handleOnClick(note.id)}>{note.description}</button>
+          <button disabled={isLoading} className="notes-preview-list__list-item-button" onClick={() => handleOnClick(note.id)}>{note.title}</button>
         </li>
       ))}
     </ul>

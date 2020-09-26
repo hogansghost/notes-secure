@@ -12,35 +12,23 @@ export function NotesAppProvider({
   children,
 }) {
   const initialNotes = [{
-    completed: false,
-    description: 'Add proper markup',
+    dateCreated: new Date(),
+    dateEdited: new Date(),
+    title: 'Note 1: Oldest note',
+    content: 'Add proper markup',
     id: uuidv4(),
-    order: 0,
   }, {
-    completed: false,
-    description: 'Add styling',
+    dateCreated: new Date(),
+    dateEdited: new Date(),
+    title: 'Note 2',
+    content: 'Add styling',
     id: uuidv4(),
-    order: 1,
   }, {
-    completed: false,
-    description: 'Build proper ui (atomic) components',
+    dateCreated: new Date(),
+    dateEdited: new Date(),
+    title: 'Note 3',
+    content: 'Build proper ui (atomic) components',
     id: uuidv4(),
-    order: 2,
-  }, {
-    completed: false,
-    description: 'Add test coverage',
-    id: uuidv4(),
-    order: 3,
-  }, {
-    completed: false,
-    description: 'Update to TypeScript',
-    id: uuidv4(),
-    order: 4,
-  }, {
-    completed: false,
-    description: 'See about adding file reordering (mobile is an issue)',
-    id: uuidv4(),
-    order: 5,
   }];
 
   const {
@@ -75,28 +63,29 @@ export function NotesAppProvider({
 
   const setActiveNote = async (id) => {
     const noteObj = notesList.filter((note) => note.id === id)[0];
-    const noteDescription = await decrypt(noteObj.description);
+    const noteContent = await decrypt(noteObj.content);
     const noteDecrypted = {
       ...noteObj,
-      description: noteDescription,
+      content: noteContent,
     };
 
     setSelectedNote(noteDecrypted);
   }
 
 
-  const addNewNote = (note) => {
+  const addNewNote = ({ title, content }) => {
     setNotesList([...notesList, {
-      completed: false,
-      description: encodeURI(sanitize(note)),
+      dateCreated: new Date(),
+      dateEdited: new Date(),
+      content,
       id: uuidv4(),
-      order: notesList.length,
+      title,
     }]);
   };
 
-  const editTask = ({ updatedId, updatedDescription }) => {
+  const editTask = ({ updatedId, updatedContent }) => {
     const updatedNote = notesList.map((currTask, index) => (
-      currTask.id === updatedId ? { ...currTask, order: index, description: updatedDescription } : {...currTask, order: index }
+      currTask.id === updatedId ? { ...currTask, content: updatedContent } : currTask
     ));
 
     setNotesList(updatedNote);

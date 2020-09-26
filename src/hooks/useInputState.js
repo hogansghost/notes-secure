@@ -4,11 +4,12 @@ export default (initialVal) => {
   const [value, setValue] = useState(initialVal);
 
   const changeValue = (evt) => {
-    setValue(evt);
+    const newValue = evt.target?.value;
+    setValue(newValue);
   };
 
-  const resetValue = (newString = '') => {
-    setValue(newString);
+  const resetValue = (resetValue = '') => {
+    setValue(resetValue);
   };
 
   return [value, changeValue, resetValue];

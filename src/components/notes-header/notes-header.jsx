@@ -4,9 +4,7 @@ import { DarkModeContext } from 'context/dark-mode-context';
 
 import './notes-header.scss';
 
-export const NotesHeader = ({
-  notes
-}) => {
+export const NotesHeader = () => {
   const {
     isDarkMode,
     setIsDarkMode,

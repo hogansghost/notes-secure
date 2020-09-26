@@ -10,22 +10,21 @@ export const NotesEditor = () => {
   } = useContext(NotesAppContext);
 
   const [noteContent, setNoteContent] = useInputState('');
-
-  const handleOnChange = (evt) => {
-    const value = evt.target.value;
-
-    setNoteContent(value);
-  }
+  const [noteTitle, setNoteTitle] = useInputState('');
 
   const handleSaveOnClick = () => {
-    addNewNote(noteContent);
+    addNewNote({
+      title: noteTitle,
+      content: noteContent,
+    });
   }
 
   return (
-    <>
-    <textarea value={noteContent} onChange={handleOnChange}></textarea>
-    <button onClick={handleSaveOnClick}>SAVE</button>
-    </>
+    <div className="notes-editor">
+      <input className="notes-editor__title" value={noteTitle} onChange={setNoteTitle} />
+      <textarea className="notes-editor__content" value={noteContent} onChange={setNoteContent}></textarea>
+      <button className="notes-editor__Save" onClick={handleSaveOnClick}>SAVE</button>
+    </div>
   )
 };
 
