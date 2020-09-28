@@ -1,7 +1,19 @@
+@import '../../vars';
+
 .notes-preview-list {
+  height: 100%;
+  width: 100%;
+  background-color: $background-accent-color;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
 
   &__list-item {
     display: block;
+    margin: 0;
+    padding: 0;
     max-width: 100%;
   }
 
@@ -14,6 +26,29 @@
     white-space: nowrap;
     min-height: 2em;
     padding: 16px;
+    width: 100%;
     max-width: 100%;
+    text-align: left;
+    cursor: pointer;
+    border-left: 5px solid rgba($brand-primary, 0);
+    transition: all 333ms;
+
+    &[disabled] {
+      cursor: default;
+      opacity: 0.65;
+    }
+
+    &:hover:not([disabled]) {
+      border-color: $brand-primary;
+    }
+
+    &--selected {
+      background: $brand-primary;
+      color: white;
+    }
+  }
+
+  &__list-item-button-untitled {
+    font-style: italic;
   }
 }

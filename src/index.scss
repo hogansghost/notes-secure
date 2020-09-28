@@ -31,9 +31,17 @@ code {
 }
 
 button {
+  color: inherit;
   -webkit-appearance: none;
 }
 
+textarea,
 input {
+  color: $input-color;
   font-size: 16px;
+  font-family: inherit;
+  padding: 16px;
+  background-color: $input-background-color;
+  border-radius: 8px;
+  border: 1px solid $input-border-color;
 }

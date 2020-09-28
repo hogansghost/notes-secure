@@ -1,4 +1,4 @@
-import React, { createContext, useCallback, useEffect, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 
 export const DarkModeContext = createContext();
 
@@ -15,11 +15,11 @@ export function DarkmodeProvider({
   const [darkMode, setDarkMode] = useState(Themes.Light);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
-  const handleDarkModeChangeCallback = useCallback(() => {
-    const isDarkMode = darkMode === Themes.Dark;
+  // const handleDarkModeChangeCallback = useCallback(() => {
+  //   const isDarkMode = darkMode === Themes.Dark;
 
-    setDarkMode(isDarkMode ? Themes.Dark : Themes.Light);
-  }, [darkMode]);
+  //   setDarkMode(isDarkMode ? Themes.Dark : Themes.Light);
+  // }, [darkMode]);
 
   const handleDarkModeChange = () => {
     const isDarkMode = window.matchMedia(darkMediaQuery).matches;

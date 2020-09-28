@@ -1,9 +1,9 @@
-import React, { createContext, useCallback, useEffect, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 
 export const LoadingContext = createContext();
 
 export const LoadingStates = {
-  Fetching: 'fecthing',
+  Loading: 'loading',
   Saving: 'saving',
 };
 
@@ -14,7 +14,9 @@ export function LoadingProvider({
   const [loading, setLoading] = useState([]);
 
   const addLoadingState = (newLoading) => {
-    setLoading([...loading, newLoading]);
+    if (newLoading && !loading.includes(newLoading)) {
+      setLoading([...loading, newLoading]);
+    }
   }
 
   const removeLoadingState = (loadingToRemove) => {

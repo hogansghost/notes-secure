@@ -1,6 +1,31 @@
+@import '../../../vars';
+
 .btn {
+  --button-color: #{$brand-primary};
+
+  &[data-type="delete"] {
+    --button-color: #{$brand-danger};
+  }
+
   display: inline-block;
   vertical-align: middle;
   border: 0;
-  background: none;
+  background: var(--button-color);
+  border-radius: 4px;
+  padding: 12px 16px;
+  color: white;
+  box-shadow:
+    0px 2px 4px rgba(0,0,0,0.1),
+    0px 4px 12px -4px rgba(0,0,0,0.15),
+    0px 4px 12px -4px rgba(var(--button-color), 0.15);
+    cursor: pointer;
+    transition: all 333ms;
+
+    &[disabled] {
+      cursor: default;
+    }
+
+    &:hover {
+      transform: translateY(-1px);
+    }
 }

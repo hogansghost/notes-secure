@@ -1,41 +1,70 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 
 import { LoadingContext } from 'context/loading-context';
 import { NotesAppContext } from 'context/notes-app-context';
 
-import NotesEditor from 'components/notes-editor/notes-editor';
+import EditNote from 'components/notes-editor/edit-note/edit-note';
+import Button from 'components/ui/button/button';
+
+import { bem } from 'utils/bem';
 
 import './notes-viewer.scss';
 
-export const NotesViewer = ({
-  notes
-}) => {
+export const NotesViewer = () => {
   const {
     selectedNote,
+    setIsGlobalEditing,
   } = useContext(NotesAppContext);
 
   const {
     isLoading,
   } = useContext(LoadingContext);
 
-  return !isLoading ? (
-    <div className="notes-viewer">
-      { selectedNote ? (
-        <>
-          <p>{selectedNote.id}</p>
-          <p>{selectedNote.title}</p>
+  const [isEditing, setIsEditing] = useState(false);
 
-          <ReactMarkdown source={selectedNote.description} />
-        </>
+  const handleEditClick = () => {
+    setIsEditing(true);
+    setIsGlobalEditing(true);
+  }
+
+  const handleOnCancel = () => {
+    setIsEditing(false);
+    setIsGlobalEditing(false);
+  }
+
+  const handleOnSubmit = () => {
+    setIsEditing(false);
+  }
+
+  return (
+    <div className={bem('notes-viewer', { isLoading })}>
+      { isEditing ? (
+        <EditNote
+          onCancel={handleOnCancel}
+          onSubmit={handleOnSubmit}
+        />
       ) : (
-        <p>Select a note!</p>
-      )}
+        <div className="notes-viewer__selected-note">
+          { selectedNote ? (
+            <>
+              <div className="notes-viewer__selected-note-actions">
+                <Button onClick={handleEditClick}>Edit</Button>
+              </div>
 
-      <NotesEditor />
+              <p>{selectedNote.title}</p>
+
+              <ReactMarkdown
+                source={selectedNote.content}
+              />
+
+            </>
+          ) : (
+            <p>Select a note!</p>
+          )}
+        </div>
+      )}
     </div>
-  ) : (
-    <p>L O A D I N G   L O L</p>
   )
 }
 

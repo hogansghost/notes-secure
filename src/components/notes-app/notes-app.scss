@@ -2,15 +2,26 @@
 
 .notes-app {
   display: grid;
-  grid-template-columns: 450px minmax(0px, 1fr);
+  grid-template-columns: 27.5% minmax(0px, 1fr);
   grid-template-rows: auto 1fr;
   grid-template-areas:
   "header header"
   "sidebar note";
-  grid-gap: 20px;
-  min-height: 100vh;
+  height: 100vh;
 
-  .notes-list {
+  &__header {
+    grid-area: header;
+    background: $header-background-color;
+    transition: background-color 333ms, color 333ms;
+    box-shadow: 0 2px 6px -2px rgba(0,0,0,0.15), 0px 4px 16px -2px rgba(0,0,0,0.2);
+  }
+
+  &__list {
     grid-area: sidebar;
+  }
+
+  &__content {
+    grid-area: note;
+    padding: 20px 40px;
   }
 }

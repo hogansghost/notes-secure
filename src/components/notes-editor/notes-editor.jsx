@@ -1,29 +1,64 @@
-import React, { useContext } from 'react';
+import React from 'react';
+
 import { useInputState } from 'hooks/index';
 
-import { NotesAppContext } from 'context/notes-app-context';
+import Button, { ButtonType } from 'components/ui/button/button';
 
-export const NotesEditor = () => {
-  const {
-    addNewNote,
-    selectedNote,
-  } = useContext(NotesAppContext);
+import './notes-editor.scss';
 
-  const [noteContent, setNoteContent] = useInputState('');
-  const [noteTitle, setNoteTitle] = useInputState('');
+export const NotesEditor = ({
+  note,
+  onCancel,
+  onDelete,
+  onSubmit,
+}) => {
+  const [noteContent, setNoteContent, resetNoteContent] = useInputState(note?.content || '');
+  const [noteTitle, setNoteTitle, resetNoteTitle] = useInputState(note?.title || '');
 
-  const handleSaveOnClick = () => {
-    addNewNote({
-      title: noteTitle,
+  const handleOnSubmit = () => {
+    onSubmit({
       content: noteContent,
+      title: noteTitle,
     });
+  }
+
+  const resetEditInputs = () => {
+    resetNoteContent();
+    resetNoteTitle();
+  }
+
+  const handleOnCancel = () => {
+    resetEditInputs();
+
+    onCancel();
+  }
+
+  const handleOnDelete = () => {
+    onDelete({ id: note.id });
+    resetEditInputs();
   }
 
   return (
     <div className="notes-editor">
-      <input className="notes-editor__title" value={noteTitle} onChange={setNoteTitle} />
-      <textarea className="notes-editor__content" value={noteContent} onChange={setNoteContent}></textarea>
-      <button className="notes-editor__Save" onClick={handleSaveOnClick}>SAVE</button>
+      <div className="notes-editor__actions">
+        { onDelete && (
+          <Button type={ButtonType.Delete} onClick={handleOnDelete}>Delete</Button>
+        )}
+
+        <Button onClick={handleOnCancel}>Cancel</Button>
+
+        <Button onClick={handleOnSubmit}>Save changes</Button>
+      </div>
+
+      <div className="notes-editor__content">
+        <label className="notes-editor__content-title">
+          <input className="notes-editor__content-title-input" value={noteTitle} onChange={setNoteTitle} />
+        </label>
+
+        <label className="notes-editor__content-body">
+          <textarea className="notes-editor__content-body-input" value={noteContent} onChange={setNoteContent}></textarea>
+        </label>
+      </div>
     </div>
   )
 };

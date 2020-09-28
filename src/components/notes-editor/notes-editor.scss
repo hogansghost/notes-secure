@@ -1,0 +1,32 @@
+.notes-editor {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-rows: auto 1fr;
+  height: 100%;
+
+  &__content {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-rows: auto 1fr;
+  }
+
+  &__content-title {}
+  &__content-title-input {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__content-body {}
+  &__content-body-input {
+    width: 100%;
+    height: 100%;
+    resize: none;
+    overflow: auto;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+}
