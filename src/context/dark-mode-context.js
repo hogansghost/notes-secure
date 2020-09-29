@@ -7,7 +7,7 @@ export const Themes = {
   Light: 'light',
 };
 
-export function DarkmodeProvider({
+export function DarkModeProvider({
   children,
 }) {
   const darkMediaQuery = 'screen and (prefers-color-scheme: dark)';
@@ -15,17 +15,11 @@ export function DarkmodeProvider({
   const [darkMode, setDarkMode] = useState(Themes.Light);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
-  // const handleDarkModeChangeCallback = useCallback(() => {
-  //   const isDarkMode = darkMode === Themes.Dark;
-
-  //   setDarkMode(isDarkMode ? Themes.Dark : Themes.Light);
-  // }, [darkMode]);
-
   const handleDarkModeChange = () => {
-    const isDarkMode = window.matchMedia(darkMediaQuery).matches;
+    const isPreferenceDarkMode = window.matchMedia(darkMediaQuery).matches;
 
-    setDarkMode(isDarkMode ? Themes.Dark : Themes.Light);
-    setIsDarkMode(isDarkMode);
+    setDarkMode(isPreferenceDarkMode ? Themes.Dark : Themes.Light);
+    setIsDarkMode(isPreferenceDarkMode);
   };
 
   useEffect(() => {
@@ -40,6 +34,11 @@ export function DarkmodeProvider({
     setDarkMode(isDarkMode ? Themes.Dark : Themes.Light);
     document.documentElement.setAttribute('data-theme', isDarkMode ? Themes.Dark : Themes.Light);
   }, [isDarkMode]);
+
+  useEffect(() => {
+    const isPreferenceDarkMode = window.matchMedia(darkMediaQuery).matches;
+    setIsDarkMode(isPreferenceDarkMode);
+  }, []);
 
   return (
     <DarkModeContext.Provider

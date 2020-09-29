@@ -52,15 +52,18 @@ export const NotesViewer = () => {
                 <Button onClick={handleEditClick}>Edit</Button>
               </div>
 
-              <p>{selectedNote.title}</p>
+              <div className="notes-viewer__selected-note-content">
+                <p>{selectedNote.title}</p>
 
-              <ReactMarkdown
-                source={selectedNote.content}
-              />
-
+                <ReactMarkdown
+                  source={selectedNote.content}
+                />
+              </div>
             </>
           ) : (
-            <p>Select a note!</p>
+            <div className="notes-viewer__select-content">
+              <p className="notes-viewer__select-message">Select a note!</p>
+            </div>
           )}
         </div>
       )}

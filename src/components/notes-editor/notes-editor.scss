@@ -1,13 +1,38 @@
+@import '../../vars';
+
 .notes-editor {
   display: grid;
   grid-gap: 20px;
   grid-template-rows: auto 1fr;
   height: 100%;
 
+
+  &__actions {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    padding: 20px 40px;
+    border-bottom: 1px solid $background-accent-color;
+  }
+
+  &__actions-section {
+    flex: 0 1 auto;
+    min-width: 0;
+    flex-flow: row wrap;
+
+    button {
+      &:nth-last-child(n+2) {
+        margin-right: 20px;
+      }
+    }
+  }
+
+
   &__content {
     display: grid;
     grid-gap: 20px;
     grid-template-rows: auto 1fr;
+    padding: 0px 40px 20px 40px;
   }
 
   &__content-title {}
@@ -22,11 +47,5 @@
     height: 100%;
     resize: none;
     overflow: auto;
-  }
-
-  &__actions {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
   }
 }

@@ -8,7 +8,7 @@ import NotesPreviewListButton from 'components/notes-preview-list/button/button'
 import './notes-preview-list.scss';
 
 export const NotesPreviewList = ({
-  notes
+  notes = [],
 }) => {
   const {
     isGlobalEditing,
@@ -24,7 +24,7 @@ export const NotesPreviewList = ({
     setActiveNote(id);
   };
 
-  const notesList = notes.sort((a,b) => new Date(b.dateEdited).getTime() - new Date(a.dateEdited).getTime());
+  const notesList = notes.sort((a,b) => new Date(b.dateCreated).getTime() - new Date(a.dateCreated).getTime());
 
   return (
     <ul className="notes-preview-list">

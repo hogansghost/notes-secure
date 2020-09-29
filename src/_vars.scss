@@ -11,6 +11,11 @@ $content-gutter-sm: 8px;
 $content-gutter-md: 16px;
 $content-gutter-lg: 32px;
 
+/**
+ * Transition duration
+ */
+$transition-duration-medium: 274ms;
+
 :root {
   --background-color: white;
   --background-accent-color: #{rgba(black, 0.08)};
@@ -34,7 +39,9 @@ $content-gutter-lg: 32px;
 
 
 $brand-primary: #02847a;
+$brand-primary-text-contrast: #fff;
 $brand-danger: #84070f;
+$brand-danger-text-contrast: #fff;
 
 $header-background-color: rgb(25, 24, 24);
 $background-color: var(--background-color, #fff);

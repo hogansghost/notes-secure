@@ -1,3 +1,5 @@
+@import '../../vars';
+
 .notes-viewer {
   height: 100%;
   width: 100%;
@@ -6,11 +8,38 @@
     opacity: 0.5;
   }
 
+
+  &__select-content {
+    padding: 20px 40px;
+  }
+
+
   &__selected-note-actions {
+    padding: 20px 40px;
     display: flex;
     align-items: center;
     justify-content: flex-end;
   }
+
+
+  &__selected-note {
+    height: 100%;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  &__selected-note-actions {
+    position: sticky;
+    top: 0;
+    background: $background-color;
+    border-bottom: 1px solid $background-accent-color;
+    transition: background-color $transition-duration-medium, color $transition-duration-medium;
+  }
+
+  &__selected-note-content {
+    padding: 20px 40px;
+  }
+
 
   h1, h2, h3, h4, h5, h6, p, ul, ol {
     &:first-child {

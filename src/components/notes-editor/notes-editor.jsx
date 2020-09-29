@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { useInputState } from 'hooks/index';
+import { bem } from 'utils/bem';
 
 import Button, { ButtonType } from 'components/ui/button/button';
 
@@ -41,22 +42,36 @@ export const NotesEditor = ({
   return (
     <div className="notes-editor">
       <div className="notes-editor__actions">
-        { onDelete && (
-          <Button type={ButtonType.Delete} onClick={handleOnDelete}>Delete</Button>
-        )}
+        <div className={bem('notes-editor__actions-section', ['destroy'])}>
+          { onDelete && (
+            <Button type={ButtonType.Delete} onClick={handleOnDelete}>Delete</Button>
+          )}
+        </div>
 
-        <Button onClick={handleOnCancel}>Cancel</Button>
+        <div className={bem('notes-editor__actions-section', ['update'])}>
+          <Button onClick={handleOnCancel}>Cancel</Button>
 
-        <Button onClick={handleOnSubmit}>Save changes</Button>
+          <Button onClick={handleOnSubmit}>Save changes</Button>
+        </div>
       </div>
 
       <div className="notes-editor__content">
         <label className="notes-editor__content-title">
-          <input className="notes-editor__content-title-input" value={noteTitle} onChange={setNoteTitle} />
+          <input
+            className="notes-editor__content-title-input"
+            placeholder=""
+            value={noteTitle}
+            onChange={setNoteTitle}
+          />
         </label>
 
         <label className="notes-editor__content-body">
-          <textarea className="notes-editor__content-body-input" value={noteContent} onChange={setNoteContent}></textarea>
+          <textarea
+            className="notes-editor__content-body-input"
+            placeholder="Note content"
+            value={noteContent}
+            onChange={setNoteContent}
+          ></textarea>
         </label>
       </div>
     </div>

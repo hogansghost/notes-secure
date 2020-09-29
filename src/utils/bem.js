@@ -13,17 +13,20 @@ export const hyphenCase = (...strings) => {
 export function bem(baseClass = '', modifierList) {
   let stringOutputArray = [baseClass];
 
-  Object.entries(modifierList).forEach((bemEntry) => {
-    const [
-      bemKey,
-      bemValue,
-    ] = bemEntry;
+  if (Array.isArray(modifierList)) {
+    modifierList.forEach((bemClass) => stringOutputArray.push(`${baseClass}--${hyphenCase(bemClass)}`));
+  } else if (typeof modifierList === 'object') {
+    Object.entries(modifierList).forEach((bemEntry) => {
+      const [
+        bemKey,
+        bemValue,
+      ] = bemEntry;
 
-
-    if ((Array.isArray(bemValue) && !!bemValue.length) || !!bemValue) {
-      stringOutputArray.push(`${baseClass}--${hyphenCase(bemKey)}`);
-    }
-  });
+      if (Array.isArray(bemValue) || !!bemValue) {
+        stringOutputArray.push(`${baseClass}--${hyphenCase(bemKey)}`);
+      }
+    });
+  }
 
   return stringOutputArray.join(' ').trim();
 }

@@ -13,19 +13,19 @@ export function NotesAppProvider({
     dateCreated: new Date(),
     dateEdited: new Date(),
     title: 'Markup examples',
-    content: '# H1↵## H2↵### H3↵#### H4↵##### H5↵###### H6↵↵Alternatively, for H1 and H2, an underline-ish style:↵↵Alt-H1↵======↵↵Alt-H2↵------↵↵Emphasis, aka italics, with *asterisks* or _underscores_.↵↵Strong emphasis, aka bold, with **asterisks** or __underscores__.↵↵Combined emphasis with **asterisks and _underscores_**.↵↵Strikethrough uses two tildes. ~~Scratch this.~~↵↵1. First ordered list item↵2. Another item↵⋅⋅* Unordered sub-list. ↵1. Actual numbers don\'t matter, just that it\'s a number↵⋅⋅1. Ordered sub-list↵4. And another item.↵↵⋅⋅⋅You can have properly indented paragraphs within list items. Notice the blank line above, and the leading spaces (at least one, but we\'ll use three here to also align the raw Markdown).↵↵⋅⋅⋅To have a line break without a paragraph, you will need to use two trailing spaces.⋅⋅↵⋅⋅⋅Note that this line is separate, but within the same paragraph.⋅⋅↵⋅⋅⋅(This is contrary to the typical GFM line break behaviour, where trailing spaces are not required.)↵↵* Unordered list can use asterisks↵- Or minuses↵+ Or pluses↵↵```javascript↵var s = "JavaScript syntax highlighting";↵alert(s);↵```↵ ↵```python↵s = "Python syntax highlighting"↵print s↵```↵ ↵```↵No language indicated, so no syntax highlighting. ↵But let\'s throw in a <b>tag</b>.↵```',
+    content: '# H1\n## H2\n### H3\n#### H4\n##### H5\n###### H6\n\nAlternatively, for H1 and H2, an underline-ish style:\n\nAlt-H1\n======\n\nAlt-H2\n------\n\nEmphasis, aka italics, with *asterisks* or _underscores_.\n\nStrong emphasis, aka bold, with **asterisks** or __underscores__.\n\nCombined emphasis with **asterisks and _underscores_**.\n\nStrikethrough uses two tildes. ~~Scratch this.~~\n\n1. First ordered list item\n2. Another item\n⋅⋅* Unordered sub-list. \n1. Actual numbers don\'t matter, just that it\'s a number\n⋅⋅1. Ordered sub-list\n4. And another item.\n\n⋅⋅⋅You can have properly indented paragraphs within list items. Notice the blank line above, and the leading spaces (at least one, but we\'ll use three here to also align the raw Markdown).\n\n⋅⋅⋅To have a line break without a paragraph, you will need to use two trailing spaces.⋅⋅\n⋅⋅⋅Note that this line is separate, but within the same paragraph.⋅⋅\n⋅⋅⋅(This is contrary to the typical GFM line break behaviour, where trailing spaces are not required.)\n\n* Unordered list can use asterisks\n- Or minuses\n+ Or pluses\n\n```javascript\nvar s = "JavaScript syntax highlighting";\nalert(s);\n```\n \n```python\ns = "Python syntax highlighting"\nprint s\n```\n \n```\nNo language indicated, so no syntax highlighting. \nBut let\'s throw in a <b>tag</b>.\n```',
     id: uuidv4(),
   }, {
     dateCreated: new Date(),
     dateEdited: new Date(),
-    title: 'Note 2',
-    content: 'Add styling',
+    title: 'Remaning items',
+    content: '"# Remaining items\n\n## Base functionality\n\nCreate a context object to handle the base functionality for adding notes, editing, deleting, with the encrypt and decrypt functions to fun on the description when required such as loading the new notes.\n\nBasically a todo list app but with the added encrypt on save and decrypt functions.\n\n### Custom hooks\n\nA custom hook for the toggling of state as well as an input field hook for handling the input state, clearing it, etc.\n\nPort the dark mode hook that I wrote recently because why not.\n\n## Basic layout\n\nSome basic styling so that this thing is actually useable rather than a mess of buttons everywhere and no clear hierarchy.\n\n## Unit tests\n\nTest components as that\'s a pretty useful skill as well.',
     id: uuidv4(),
   }, {
     dateCreated: new Date(),
     dateEdited: new Date(),
-    title: 'Note 3',
-    content: 'Build proper ui (atomic) components',
+    title: 'Another note',
+    content: 'Clean up the default notes from the copy pasted list from my other test project',
     id: uuidv4(),
   }];
 

@@ -8,7 +8,7 @@ import AddNote from 'components/notes-editor/add-note/add-note';
 
 import './notes-app.scss';
 
-function NoteApp() {
+function NotesApp() {
   const {
     notesList,
     isAdding,
@@ -38,4 +38,4 @@ function NoteApp() {
   );
 }
 
-export default NoteApp;
+export default NotesApp;

@@ -2,17 +2,12 @@ import React, { useContext } from 'react';
 
 import NotesEditor from 'components/notes-editor/notes-editor';
 
-import { LoadingContext } from 'context/loading-context';
 import { NotesAppContext } from 'context/notes-app-context';
 
 export const EditNote = ({
   onCancel,
   onSubmit,
 }) => {
-  const {
-    isLoading,
-  } = useContext(LoadingContext);
-
   const {
     editNote,
     removeNote,
@@ -35,17 +30,14 @@ export const EditNote = ({
     removeNote({ id });
   }
 
-  return ( isLoading ? (
-      <p>Saving</p>
-    ) : (
-      <NotesEditor
-        note={selectedNote}
-        onCancel={onCancel}
-        onDelete={handleOnDelete}
-        onSubmit={handleOnSubmit}
-      />
-    )
-  )
+  return (
+    <NotesEditor
+      note={selectedNote}
+      onCancel={onCancel}
+      onDelete={handleOnDelete}
+      onSubmit={handleOnSubmit}
+    />
+  );
 };
 
 export default EditNote;

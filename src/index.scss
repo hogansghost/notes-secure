@@ -9,7 +9,7 @@
 html {
   background-color: $background-color;
   color: $text-color;
-  transition: all 333ms;
+  transition: all $transition-duration-medium;
   min-height: 100vh;
   word-break: break-word;
   word-wrap: break-word;
